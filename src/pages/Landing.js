@@ -6,7 +6,7 @@ function Landing() {
     <div className="landing-container">
 
       <section className="hero-section">
-        <h1>UrabnView- Satellite Imagery analyzer for urban planning</h1>
+        <h1>UrbanView- Satellite Imagery analyzer for urban planning</h1>
 
         <p className="subtitle">
           Rapid urbanization requires fast, efficient, and AI-powered monitoring.
