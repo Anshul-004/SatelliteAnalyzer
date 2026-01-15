@@ -1,70 +1,97 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
-  const [analysisHistory, setAnalysisHistory] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    
-    setAnalysisHistory([
-      { id: 1, name: 'Orbit 55 Analysis', date: '2025-11-28', status: 'Completed' },
-      { id: 2, name: 'Sensor Array Check', date: '2025-12-01', status: 'Processing' },
-    ]);
-  }, [navigate]);
-
-  const handleLogout = () => {
-    navigate('/login');
-  };
 
   return (
     <div className="dashboard-layout">
-     
+
+      {/* HEADER */}
       <header className="dashboard-header">
-        <h2>Satellite Analyzer Dashboard</h2>
-        <button className="logout-button" onClick={handleLogout}>Logout</button>
+        <h2>UrbanView – Urban Analysis Dashboard</h2>
+        <button className="home-button" onClick={() => navigate('/')}>
+          Back to Home
+        </button>
       </header>
 
       <div className="dashboard-content">
-        
-        
-        <section className="dashboard-section new-analysis-section">
-          <h3>Start New Analysis</h3>
-          <p>Configure parameters, upload new telemetry data, and initiate a new analysis task.</p>
-          <button className="primary-button">
-            New Analysis Configuration
+
+        {/* SECTION 1 */}
+        <section className="dashboard-card">
+          <h3>1. Area & Time Selection</h3>
+          <p>
+            Select the region of interest and define the time periods for
+            multi-temporal satellite analysis.
+          </p>
+
+          <div className="selection-row">
+            <div>
+              <label>Area of Interest</label>
+              <input type="text" placeholder="Enter city or region" />
+            </div>
+
+            <div>
+              <label>Time Periods</label>
+              <select>
+                <option>Current Year</option>
+                <option>Last 5 Years</option>
+                <option>Last 10 Years</option>
+              </select>
+            </div>
+          </div>
+
+          <button className="primary-btn">
+            Proceed to Data Analysis
           </button>
         </section>
 
-        <section className="dashboard-section history-section">
-          <h3>Analysis History</h3>
-          {analysisHistory.length === 0 ? (
-            <p>No past analysis found.</p>
-          ) : (
-            <table className="analysis-table">
-              <thead>
-                <tr><th>ID</th><th>Analysis Name</th><th>Date</th><th>Status</th></tr>
-              </thead>
-              <tbody>
-                {analysisHistory.map(item => (
-                  <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.date}</td>
-                    <td>{item.status}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+        {/* SECTION 2 */}
+        <section className="dashboard-card">
+          <h3>2. Satellite Data & Index Computation</h3>
+          <p>
+            Fetch satellite imagery using Google Earth Engine and compute
+            relevant spectral indices.
+          </p>
+
+          <div className="index-grid">
+            <div className="index-card">NDVI<br /><span>Vegetation</span></div>
+            <div className="index-card">NDWI<br /><span>Water Bodies</span></div>
+            <div className="index-card">NDBI<br /><span>Built-up Area</span></div>
+            <div className="index-card">LST<br /><span>Surface Temp.</span></div>
+          </div>
         </section>
 
-        
-        <section className="dashboard-section reports-section">
-          <h3>Download Reports</h3>
-          <p>Select a completed analysis from the history to download the final report (PDF/CSV).</p>
-          <button className="secondary-button">Generate & Download Report</button>
+        {/* SECTION 3 */}
+        <section className="dashboard-card">
+          <h3>3. Change Detection & Suitability Score</h3>
+          <p>
+            Analyze temporal changes to assess environmental impact and urban
+            growth sustainability.
+          </p>
+
+          <div className="score-box">
+            <h4>Urban Suitability Score</h4>
+            <span className="score">72 / 100</span>
+            <p>Moderately Suitable for Urban Expansion</p>
+          </div>
         </section>
+
+        {/* SECTION 4 */}
+        <section className="dashboard-card">
+          <h3>4. Visualization & Reports</h3>
+          <p>
+            Visualize analysis results and generate summary reports for planning
+            and decision-making.
+          </p>
+
+          <div className="action-row">
+            <button className="secondary-btn">View Maps</button>
+            <button className="secondary-btn">Download Report</button>
+            <button className="secondary-btn">Analyze Another Area</button>
+          </div>
+        </section>
+
       </div>
     </div>
   );
