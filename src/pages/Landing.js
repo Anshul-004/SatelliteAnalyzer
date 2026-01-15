@@ -1,61 +1,68 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import AuthModal from '../components/AuthModal';
 
 function Landing() {
+  const [showAuth, setShowAuth] = useState(false);
+
   return (
     <div className="landing-container">
 
       <section className="hero-section">
-        <h1>UrbanView- Satellite Imagery analyzer for urban planning</h1>
+        <h1 className="hero-title">
+        UrbanView
+          <span>Satellite Imagery Analyzer for Urban Planning</span>
+        </h1>
+
 
         <p className="subtitle">
-          Rapid urbanization requires fast, efficient, and AI-powered monitoring.
+          Rapid urbanization demands accurate, data-driven insights to balance
+          development and environmental sustainability.
         </p>
 
-        <h2 className="solution-headline">
-          The AI-Powered Geospatial Intelligence Solution
-        </h2>
         <p className="subtitle-solution">
-          Satellite imagery and deep learning provide powerful, low-cost insights with minimal effort.
+          UrbanView is an AI-powered geospatial intelligence platform that analyzes
+          satellite imagery across time to detect urban expansion, vegetation loss,
+          water body changes, and land-use patterns.
         </p>
-        
-        <Link to="/login" className="get-started-button">
-          <button>Analyze Your City</button>
-        </Link>
-        
-        <p className="signup-prompt">
-          New user? <Link to="/signup">Create an Account</Link>
-        </p>
+
+
+        <div className="cta-wrapper">
+          <p className="cta-caption">
+            Compare present satellite data with imagery from 5 and 10 years ago
+          </p>
+          <button onClick={() => setShowAuth(true)}>
+            Analyze Your City
+          </button>
+          
+        </div>
+
       </section>
 
       <section className="features-section">
         <h2>Empowering Actionable Intelligence</h2>
+
         <div className="features-grid">
-          
           <div className="feature-card">
-            <h3>For Civic Bodies</h3>
-            <p>Gain objective data on unauthorized development and environmental changes to enforce urban planning regulations effectively.</p>
-          </div>
-          
-          <div className="feature-card">
-            <h3>For Researchers</h3>
-            <p>Access scalable, historical data archives for longitudinal studies on urban sprawl, green cover loss, and land-use change dynamics.</p>
+            <h3>Civic Bodies</h3>
+            <p>Detect unauthorized construction, monitor urban sprawl, and support data-backed urban planning decisions.</p>
           </div>
 
           <div className="feature-card">
-            <h3>For the Public</h3>
-            <p>Increase transparency and accountability by providing easy-to-use, powerful insights into local environmental and construction activities.</p>
+            <h3>Researchers</h3>
+            <p>Study long-term land-use change using historical satellite imagery and indices like NDVI, NDWI, and NDBI.</p></div>
+
+          <div className="feature-card">
+            <h3>Public</h3>
+            <p>Understand urban growth trends, environmental impact, and sustainability risks through visual insights.</p>
           </div>
         </div>
       </section>
 
-       <section className="cta-section">
-        <h2>Ready to Transform Urban Monitoring?</h2>
-        <Link to="/login" className="cta-button">
-          <button>Access Dashboard</button>
-        </Link>
-      </section>
-
+      {/* AUTH MODAL */}
+      <AuthModal
+        isOpen={showAuth}
+        onClose={() => setShowAuth(false)}
+      />
     </div>
   );
 }
