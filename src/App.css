@@ -17,6 +17,10 @@ body {
   background: var(--bg-main);
   color: var(--text-dark);
 }
+html, body {
+  height: 100%;
+}
+
 
 h1, h2, h3 {
   margin-top: 0;
@@ -52,9 +56,12 @@ button:hover {
 
 .landing-container {
   max-width: 1200px;
+  height: 100vh;           
   margin: 0 auto;
-  padding: 40px 20px 60px;
+  padding: 20px;           
   text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .hero-section {
@@ -101,8 +108,7 @@ button:hover {
   border: none;
   cursor: pointer;
   transition: 0.2s ease;
-  margin-bottom: 8px;
-  margin: 0;
+  margin: 12px 0;
 }
 
 .hero-section button:hover {
@@ -121,12 +127,13 @@ button:hover {
   color: var(--text-muted);
 }
 .features-section {
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .features-section h2 {
   font-size: 2rem;
-  margin-bottom: 36px;
+  margin-top: 8px;
+  margin-bottom: 28px;
   color: var(--text-dark);
 }
 
@@ -254,7 +261,30 @@ button:hover {
   font-weight: 500;
   cursor: pointer;
 }
+.auth-popup {
+  position: relative;  
+}
 
+.auth-popup input,
+.auth-popup button {
+  width: 100%;
+  box-sizing: border-box;   
+}
+
+.auth-popup button[type="submit"] {
+  height: 46px;
+  margin-top: 6px;
+}
+.card-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;          /* black */
+  cursor: pointer;
+  line-height: 1;
+}
 .dashboard-layout {
   min-height: 100vh;
   background: #f6f9fc;
