@@ -9,14 +9,14 @@ function AuthModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  // Email / Password (dummy for now)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate("/dashboard");
     onClose();
   };
 
-  // ✅ GOOGLE LOGIN
+
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
@@ -54,7 +54,7 @@ function AuthModal({ isOpen, onClose }) {
           </button>
         </form>
 
-        {/* ✅ GOOGLE BUTTON */}
+       
         <button
           type="button"
           className="google-btn"
